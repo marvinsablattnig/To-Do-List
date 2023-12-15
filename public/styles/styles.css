@@ -1,0 +1,33 @@
+.container-fluid h1 {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+    font-family: "Dela Gothic One", sans-serif;
+    /* border: 2px solid; */
+}
+.container-fluid#list{
+    margin-top: 20px;;
+    max-width: 400px;
+    min-width: fit-content;
+    /* border: 2px solid; */
+}
+form{
+    display: inline-flex;
+}
+#addForm{
+    display: inline-flex;
+    max-width: 400px;
+    min-width: 400px;
+    margin-top: 20px;
+
+    button{
+
+    margin-left: 20px;
+    }
+}
+.btn-close{
+    position: absolute;
+    right: 10px;
+}

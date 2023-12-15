@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- <link href="/5.0.0 To-Do List/public/styles/styles.css" rel="stylesheet"> -->
+    <link href="styles/styles.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <title>To-Do List</title>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <h1>
+            <%= activeList%>
+        </h1>
+    </div>
+    <div class="container">
+        <header class="d-flex justify-content-center py-3">
+            <ul class="nav nav-pills">
+                <form action="/getDoList" method="POST" id="listType">
+
+                    <li class="nav-item"><button name="todoBtn" class="nav-link <%=activeListBtn%>"
+                            type="submit">To-Do</button>
+                    </li>
+                </form>
+                <!-- <form action="/getBuyList" method="get" id="listType">
+
+                    <li class="nav-item"><button id="buyBtn" class="nav-link" type="submit">To-Buy</button>
+                    </li>
+                </form> -->
+            </ul>
+        </header>
+    </div>
+    <div class="container-fluid" id="list">
+        <ul class="list-group">
+            <% for(var i=0; i < listItem.length; i++){%>
+                <li class="list-group-item">
+                    <form action="/deletePost" method="post" id="deleteForm">
+                        <label for="<%=id%>">
+                            <%=listItem[i]%>
+                        </label>
+                        <button class="btn-close" name="id" value="<%=id%>" type="submit" id="<%=id%>">
+                    </form>
+                </li>
+                <%}%>
+
+        </ul>
+        <div class="input-group mb-3">
+            <form action="/add" method="POST" id="addForm">
+                <input type="text" name="activity" class="form-control" placeholder="Enter Activity ..."
+                    aria-label="Recipient's username" aria-describedby="button-addon2" id="inputfield" required>
+                <button class="btn btn-outline-secondary" type="submit" value="OK" id="add-button">Button</button>
+            </form>
+        </div>
+        <ul class="list-group">
+            <% for(var i=0; i < doneList.length; i++){%>
+                <li class="list-group-item">
+                    <label for="<%=id%>">
+                        <%=doneList[i]%>
+                    </label>
+                </li>
+                <%}%>
+                    <form action="/refresh" method="get" id="addForm">
+                        <button class="btn btn-outline-secondary" type="submit" value="OK"
+                            id="refresh-button">Refresh</button>
+                    </form>
+
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
